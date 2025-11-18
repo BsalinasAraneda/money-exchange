@@ -1,0 +1,14 @@
+public record ExchangeAPI(
+	String time_last_update_utc,
+	String base_code,
+	String target_code,
+	double conversion_rate,
+	double conversion_result
+){
+}
+
+//conversion_rate ==> Corresponde al valor que tiene la moneda en ese momento
+//conversion_result ==> Corresponde a la conversion final 
+// base_code ==> target_code
+
+https://v6.exchangerate-api.com/v6/08f7797705776a6bbb2c2ec7/pair/CLP/JPY/20000
