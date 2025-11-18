@@ -37,13 +37,30 @@ public class ApiClient {
 
     public String busquedaPersonalizada(String base, String target, double monto) throws IOException, InterruptedException {
         // Construimos el URI de manera segura
-        URI BASE_URL_API_EXANCGHE = URI.create("https://v6.exchangerate-api.com/v6/"+API_KEY_EXANCHE+"/pair/"+base+"/"+target+"/"+monto);
+        URI URL_BY_DIVISE = URI.create("https://v6.exchangerate-api.com/v6/"+API_KEY_EXANCHE+"/pair/"+base+"/"+target+"/"+monto);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(BASE_URL_API_EXANCGHE)
+                .uri(URL_BY_DIVISE)
                 .GET()
                 .build();
         HttpResponse<String> response  = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
+        if(response.statusCode() != 200){
+            throw new RuntimeException("ERROR HTTP: " + response.statusCode());
+        }
+
+        return response.body();
+    }
+
+    public String obtenerHistoricoDivisa(String year, String target, String month, String day) throws IOException, InterruptedException {
+        URI URL_GET_HISTORY =
+                URI.create("https://v6.exchangerate-api.com/v6/"+API_KEY_EXANCHE+"/history/"+target+"/"+year+"/"+month+"/"+day);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URL_GET_HISTORY)
+                .GET()
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         if(response.statusCode() != 200){
             throw new RuntimeException("ERROR HTTP: " + response.statusCode());
         }

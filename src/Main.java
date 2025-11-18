@@ -16,7 +16,7 @@ public class Main {
         int opc = 0;
         double montoConvertir = 0;
 
-        while(opc != 10){
+        while(opc != 12){
             System.out.println("**** API - CONVERTIDOR DE DIVISAS ****");
             System.out.println("Ingrese el monto que desea convertir");
             montoConvertir = sc.nextDouble();
@@ -60,6 +60,20 @@ public class Main {
                     System.out.println("Conversion JPY A WON");
                     procesarConversion("JPY","WON",montoConvertir,listaConversiones);
                     break;
+                case 10:
+                    String monedaBase = "";
+                    String monedaTarget = "";
+                    double monto = 0;
+                    sc.nextLine();
+                    System.out.println("Ingrese una conversion personalizada");
+                    System.out.println("Moneda base");
+                    monedaBase = sc.nextLine();
+                    System.out.println("Moneda objetivo");
+                    monedaTarget = sc.nextLine();
+                    System.out.println("Ingrese monto");
+                    monto = sc.nextDouble();
+                    procesarConversion(monedaBase, monedaTarget, monto, listaConversiones);
+                    break;
                 default:
                     System.out.println("La dirección ingresada no es valida");
             }
@@ -79,7 +93,9 @@ public class Main {
         System.out.println("[7] Convertir de CLP A WON");
         System.out.println("[8] Convertir de USD A WON");
         System.out.println("[9] Convertir de USD A CLP");
-        System.out.println("[10] Abandonar el conversor...");
+        System.out.println("[10] Ingrese una conversion Personalizada");
+        System.out.println("[11] Obtener historico de precio por una Divisa");
+        System.out.println("[12] Abandonar el conversor...");
         return scan.nextInt();
     }
 
@@ -100,6 +116,4 @@ public class Main {
         listaConversiones.add(moneda);
         System.out.println(moneda);
     }
-
-
 }
