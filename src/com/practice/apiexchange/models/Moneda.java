@@ -39,11 +39,11 @@ public class Moneda {
 
     @Override
     public String toString() {
-        return  "*** Datos Convervion ***" +
-                "Moneda origen: " + monedaOrigen +
-                "Moneda destino:  " + monedaDestino +
-                "Fecha ultima actualizacion " + fechaUltimaActualizacion +
-                "Valor actual mercado: " + valorMonedaActual +
-                "Valor final conversion: " + valorFinalConversion + "\n";
+        return  "*** Datos Convervion ***" + "\n"+
+                " Moneda origen: " + monedaOrigen + "\n"+
+                " Moneda destino: " + monedaDestino + "\n"+
+                " Fecha ultima actualizacion: " + fechaUltimaActualizacion + "\n"+
+                " Valor actual mercado: " + valorMonedaActual + "\n"+
+                " Valor final conversion: " + valorFinalConversion + "\n";
     }
 }
